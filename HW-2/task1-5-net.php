@@ -16,28 +16,48 @@
 
 <?php
 
-/* Задание №1 */
+/* Задание–1 */
 
-$a =random_int(-1000, 1000);
-$b =random_int(-1000, 1000);
+$a = random_int(-1000, 1000);
+$b = random_int(-1000, 1000);
 
 if (($a > 0) && ($b > 0)) { 
     $c = $a - $b;
-    echo ("Разность чисел {$a} и {$b}: `{$c}`");
+    echo ("Разность чисел {$a} и {$b}: {$c}");
  } else if (($a < 0) && ($b < 0)) {
       $c = $a*$b;
-      echo ("Произведение  чисел {$a} и {$b}: {$c}");
+      echo ("Произведение чисел {$a} и {$b}: {$c}");
     } else {
         $c = $a + $b;
         echo ("Сумма чисел {$a} и {$b}: {$c}");
-    };
-
-
-/* Задание №2 */
-$a = random_int(0, 15);
-    switch $a {
-        option 1:
     }
+echo "<br /> <hr /> <br />";
+
+/* Задание–2 */
+$a = random_int(0, 15);
+
+echo "Переменная {$a}";
+echo "<br />";
+    switch ($a) {
+        case 0: echo " 0 ";
+        case 1: echo " 1 ";
+        case 2: echo " 2 ";
+        case 3: echo " 3 ";
+        case 4: echo " 4 ";
+        case 5: echo " 5 ";
+        case 6: echo " 6 ";
+        case 7: echo " 7 ";
+        case 8: echo " 8 ";
+        case 9: echo " 9 ";
+        case 10: echo " 10 ";
+        case 11: echo " 11 ";
+        case 12: echo " 12 ";
+        case 13: echo " 13 ";
+        case 14: echo " 14 ";                                                
+        case 15: echo " 15 ";    
+    }
+
+/* Задание–3 */
 
 ?>
 
