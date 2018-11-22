@@ -5,19 +5,25 @@
 если $а и $b отрицательные, вывести их произведение;
 если $а и $b разных знаков, вывести их сумму;
 Ноль можно считать положительным числом.
+
 2. Присвоить переменной $а значение в промежутке [0..15]. С помощью оператора 
 switch организовать вывод чисел от $a до 15.
+
 3. Реализовать основные 4 арифметические операции в виде функций с двумя 
 параметрами. Обязательно использовать оператор return.
+
 4. Реализовать функцию с тремя параметрами: function mathOperation
 ($arg1, $arg2, $operation), где $arg1, $arg2 – значения аргументов, 
 $operation – строка с названием операции. В зависимости от переданного значения 
 операции выполнить одну из арифметических операций (использовать функции из 
 пункта 3) и вернуть полученное значение (использовать switch).
+
 5. Посмотреть на встроенные функции PHP. Используя имеющийся HTML-шаблон, 
 вывести текущий год в подвале при помощи встроенных функций PHP.
+
 6. *С помощью рекурсии организовать функцию возведения числа в степень. Формат: 
 function power($val, $pow), где $val – заданное число, $pow – степень.
+
 7. *Написать функцию, которая вычисляет текущее время и возвращает его в 
 формате с правильными склонениями, например:
 22 часа 15 минут
@@ -41,9 +47,12 @@ if (($a > 0) && ($b > 0)) {
     $c = $a + $b;
     echo ("Сумма чисел {$a} и {$b}: {$c}");
 }
-echo "<br /> <hr /> <br />";
+
 
 /* Задание–2 */
+$lineBracker = "<br /><hr /><br />";
+echo $lineBracker;
+
 $a = random_int(0, 15);
 
 echo "Переменная {$a}";
@@ -66,13 +75,13 @@ switch ($a) {
     case 14: echo " 14 ";
     case 15: echo " 15 ";
 }
-echo "<br /> <hr />"
+
 ?>
 
 
 <?php
 /* Задание–3 */
-echo "<br />";
+echo $lineBracker;
 
 function addition($var1, $var2) {
     return $var1 + $var2;
@@ -95,7 +104,7 @@ function division($var1, $var2) {
 
 $variable1 = random_int(-99, 99);
 $variable2 = random_int(-99, 99);
-echo "Переменные \$var1 = {$variable1} и \$var2 = {$variable2}";
+echo "Переменные \$var1 = {$variable1} и \$var2 = {$variable2} <br />";
 echo "<br /> Сложение: ";
 echo addition($variable1, $variable2);
 echo "<br /> Вычитание: ";
@@ -103,12 +112,12 @@ echo subtraction($variable1, $variable2);
 echo "<br /> Умножение: ";
 echo multiplication($variable1, $variable2);
 echo "<br /> Деление: ";
-echo multiplication($variable1, $variable2);
+echo division($variable1, $variable2);
 ?>
 
 <?php
 /* Задание–4 */
-echo "<br />";
+echo $lineBracker;
 
 $randomOperation = random_int(1, 4);
 
@@ -121,7 +130,7 @@ switch ($randomOperation) {
         break;
     case 4: $mathOperation = "/";
 }
-/* Добавил переменную выше что бы было больше switch */
+/* Добавил переменную выше, что бы было больше switch */
 
 function mainMathOperations($variable1, $variable2, $mathOperation) {
     switch ($mathOperation) {
@@ -139,9 +148,57 @@ function mainMathOperations($variable1, $variable2, $mathOperation) {
             break;
         case "/":
             echo "<br /> Деление: ";
-            echo multiplication($variable1, $variable2);
+            echo division($variable1, $variable2);
     }
 }
 
 mainMathOperations($variable1, $variable2, $mathOperation);
+?>
+
+<?php
+/* Задание–6 */
+echo $lineBracker;
+
+$val = random_int(-10, 10);
+$pow = random_int(0, 10);
+
+//вероятно вложенную функциию нужно было оюъявлеть отдельно, а не внутри
+
+function power($val, $pow) {
+    if (($val === 0) && ($pow > 0)) 
+        {return 0;} 
+        else if  (($val === 0) && ($pow === 0)) {
+            return "NaN";
+        }
+    if ($pow >= 1) {
+        return $val * power($val, $pow - 1);
+    } else if ($pow <= -1) {
+        
+        function pNegative($v, $p) {
+            if ($p <= -1) {
+                return $v * pNegative($v, $p + 1);
+            } else {
+                return 1;
+            }
+        }
+        $interResult = pNegative($val, $pow);
+        if ($interResult !== 0) 
+            {return 1 / $interResult;}
+           else {return "INF";}
+        
+    } else {return 1;}
+}
+
+$result = power($val, $pow);
+echo "Число - \"{$val}\", в степени - \"{$pow}\" = {$result}";
+echo $lineBracker;
+
+$val = random_int(-10, 10);
+$pow = random_int(-10,0);
+
+
+
+$result = power($val, $pow);
+echo "Число - \"{$val}\", в степени - \"{$pow}\" = {$result}";
+
 ?>
