@@ -206,3 +206,23 @@ $result = power($val, $pow);
 echo "Число - \"{$val}\", в степени - \"{$pow}\" = {$result}";
 ?>
 
+<?php
+
+echo $lineBracker;
+echo "Задание–6";
+
+function newPower($val, $pow) {
+    if ($pow == 0) {
+        return 1;
+    }
+    if ($pow<0) {
+        return newPower(1/$val,-$pow);
+    }
+       
+    return $val * newPower($val, $pow - 1);
+}
+
+$a = newPower(10,1);
+echo "степень - {$a}";
+
+?>

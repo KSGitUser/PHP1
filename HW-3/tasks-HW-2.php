@@ -3,12 +3,6 @@
 /*
  * PHP-1 HW-2
  * 
-  1. С помощью цикла while вывести все числа в промежутке от 0 до 100, которые
-  делятся на 3 без остатка.
-
-
-
-
 
 
   6. В имеющемся шаблоне сайта заменить статичное меню (ul – li) на генерируемое
@@ -16,15 +10,11 @@
  * их циклом. Подумать, как можно реализовать меню с вложенными подменю? 
  * Попробовать его реализовать через рекурсию. Чтобы любой уровень вложенности 
  * формировался по массиву. Не забудьте чтобы гиперссылки тоже были в массиве.
-  7. *Вывести с помощью цикла for числа от 0 до 9, не используя тело цикла.
- * Выглядеть должно так:
-  for (…){ // здесь пусто}
 
-  8. *Повторить третье задание, но вывести на экран только города, начинающиеся
- * с буквы «К».
 
-  10. * Заполнить массив в 100 элементов случайными числами от 1 до 200, так,
- * чтобы они не повторялись. Задача на бесконечный цикл while(true)
+
+
+
  * 
  */
 
@@ -254,7 +244,9 @@ function toLatin2($arrayOfLetters, $letter, $newString, $arrayOfOtherSimbols) {
     if ($letter != mb_strtoupper($letter)) {
         if (isset($arrayOfLetters[$letter])) {
             $newString = $arrayOfLetters[$letter];
-        } else { $newString = $arrayOfOtherSimbols[$letter] ?? $letter;}
+        } else {
+            $newString = $arrayOfOtherSimbols[$letter] ?? $letter;
+        }
     } else {
         if (isset($arrayOfLetters[mb_strtolower($letter)])) {
             $newString = strtoupper($arrayOfLetters[mb_strtolower($letter)]);
@@ -269,10 +261,93 @@ for ($i = 0; $i < $lengthOfStr; $i++) {
     $letter = &mb_substr($stringToChange, $i, 1);
     $newletter = toLatin2($arrayOfLetters, $letter, $newString, $arrayOfOtherSimbols);
     $stringToChange = str_replace($letter, $newletter, $stringToChange);
-  
 }
 //$stringToChange = str_replace($russianLetters, $englishLerrers, $stringToChange);
 echo $stringToChange . "<br><br>";
 
-?>
 
+echo $lineBracker;
+$task = "<pre>7. *Вывести с помощью цикла for числа от 0 до 9, не используя тело цикла.
+ Выглядеть должно так:
+  for (…){ // здесь пусто}</pre><br>";
+
+echo $task;
+
+for ($i = 0; $i < 10; print "{$i} ", $i++)
+    ;
+
+
+
+//задание №8
+echo $lineBracker;
+$task = "<pre>8. *Повторить третье задание, но вывести на экран только города,
+    начинающиеся с буквы «К».</pre>
+<br />
+";
+
+echo "{$task}";
+
+$arrayOfCities = [
+    "Московская область" => [
+        "Москва",
+        "Зеленоград",
+        "Клин"
+    ],
+    "Ленинградская область" => [
+        "Санкт-Петербург",
+        "Всеволожск",
+        "Павловск",
+        "Кронштадт"
+    ],
+    "Архангельская область" => [
+        "Архангельск",
+        "Коряжма",
+        "Котлас",
+        "Мирный (ЗАТО)",
+        "Новодвинск",
+        "Онега",
+        "Северодвинск"
+    ]
+];
+
+$strOfNumbers = "";
+
+foreach ($arrayOfCities as $key => $value) {
+    $strOfNumbers .= "{$key}: <br />";
+    $n = 0;
+    foreach ($value as $k => $val) {
+        if (mb_substr($val, 0, 1) === "К") {
+            if ($n > "0") {
+                $strOfNumbers .= ", ";
+            }
+            $strOfNumbers .= $val;
+            $n++;
+        }
+    }
+    $strOfNumbers .= "<br><br>";
+}
+
+echo $strOfNumbers;
+
+
+//задание №10
+echo $lineBracker;
+$task = "<pre>10. Заполнить массив в 100 элементов случайными числами от 1 до 200, так,
+чтобы они не повторялись. Задача на бесконечный цикл while(true)</pre>
+<br />
+";
+
+echo "{$task}";
+
+$arrayOfNumbers=[];
+for ($i=1; $i<=100; $i++) {
+    do 
+    $randomNumber = random_int(1, 200);
+    while  (in_array($randomNumber, $arrayOfNumbers));
+    $arrayOfNumbers[] = $randomNumber;
+}
+
+var_dump($arrayOfNumbers);
+
+  
+?>
