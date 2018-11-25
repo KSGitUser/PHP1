@@ -156,7 +156,7 @@ $arrayOfLetters = ["а" => "a",
     "ю" => "yu",
     "я" => "ya"];
 
-$stringToChange = "Cтрока которую нужно Переделать!";
+$stringToChange = "Строка которую нужно Переделать!";
 $lengthOfStr = mb_strlen($stringToChange);
 
 function toLatin($arrayOfLetters, $letter, $newString) {
